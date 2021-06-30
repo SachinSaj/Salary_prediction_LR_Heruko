@@ -1,5 +1,6 @@
 import pickle
 import sklearn
+import os
 import numpy as np
 from flask import Flask, render_template, request, redirect, url_for
 
@@ -19,4 +20,5 @@ def index():
         return render_template('index.html', pred=int(salary[0]), experience = exp)
         
 if __name__ == '__main__':
-    app.run()
+    port = int(os.environ.get('PORT', 5000))
+    app.run(host='0.0.0.0', port=port)
